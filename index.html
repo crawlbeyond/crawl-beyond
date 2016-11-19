@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js">
   </script>
   <script>
-    document.on("DOMContentLoaded", function(event) {
+    document.addEventListener("DOMContentLoaded", function(event) {
       $.get("./overview.md", function(data) {
         let content = $("#content");
         console.log(data);
