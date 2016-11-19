@@ -9,12 +9,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js">
   </script>
   <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
+    document.on("DOMContentLoaded", function(event) {
       $.get("./overview.md", function(data) {
         let content = $("#content");
         console.log(data);
-        //content.innerHTML = marked(data);
-        content.innerHTML = "<pre>foobar</pre>";
+        content.html(marked(data));
       });
     });
   </script>
