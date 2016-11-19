@@ -13,7 +13,8 @@
       $.get("./overview.md", function(data) {
         let content = $("#content");
         console.log(data);
-        content.innerHTML = marked(data);
+        //content.innerHTML = marked(data);
+        content.innerHTML = "<pre>foobar</pre>";
       });
     });
   </script>
