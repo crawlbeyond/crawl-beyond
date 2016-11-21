@@ -25,11 +25,11 @@
     site.visitSubsection = function(uri) {
       let query = null;
       if((query = sessionStorage.getItem(uri))) {
-        setContent(marked(query));
+        site.setContent(marked(query));
       } else {
         $.get("./" + uri + ".md", function(data) {
           sessionStorage.setItem(uri, data);
-          setContent(marked(data));
+          site.setContent(marked(data));
         });
       }
     }
