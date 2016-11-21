@@ -5,8 +5,8 @@
 <body>
   <div class="banner">
     <div class="navbar">
-      <div class="navlink current overview">Overview</div>
-      <div class="navlink features">Features</div>
+      <div class="navlink current overview"><a onclick="site.navigateTo('overview')">Overview</a></div>
+      <div class="navlink features"><a onclick="site.navigateTo('features')">Features</a></div>
     </div>
   </div>
   <div class="content"></div>
@@ -15,6 +15,25 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js">
   </script>
   <script>
+    site = {};
+
+    site.setContent = function(html) {
+      const content = $(".content");
+      content.html(html);
+    }
+
+    site.visitSubsection = function(uri) {
+      let query = null;
+      if((query = sessionStorage.getItem(uri))) {
+        setContent(marked(query));
+      } else {
+        $.get("./" + uri + ".md", function(data) {
+          sessionStorage.setItem(uri, data);
+          setContent(marked(data));
+        });
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function(event) {
       /*Site navigation controls:
         Banner contains links to the following sections of the site:
@@ -69,23 +88,11 @@
           - Link directs user to donate.md and allows donations in denominations of "Tacos" ($3), "Coffee" ($3), and "Beer" ($3), or any other whole dollar amount they choose
       */
 
-      function setContent(html) {
-        const content = $(".content");
-        content.html(html);
-      }
-
-      let query = null;
-      if((query = sessionStorage.getItem("overview"))) {
-        setContent(marked(query));
-      } else {
-        $.get("./overview.md", function(data) {
-          sessionStorage.setItem("overview", data);
-          setContent(marked(data));
-        });
-      }
+      site.visitSubsection("overview");
 
       const overview = $(".overview");
       const features = $(".features");
+      /*TODO
       const player_handbook = $(".player_handbook");
       const dm_guide = $(".dm_guide");
       const loadouts = $(".loadouts");
@@ -95,6 +102,10 @@
       const planar_topology = $(".planar_topology");
       const planes = $(".planes");
       const planar_anomalies = $(".planar_anomalies");
+      */
+
+      overview.on("click", visitSubsection("overview"));
+      features.on("click", visitSubsection("features"));
     });
   </script>
 </body>
