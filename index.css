@@ -1,0 +1,25 @@
+.banner {
+}
+
+.navbar {
+}
+
+.navlink {
+  //navlinks are the buttons that trigger a fetch command to acquire markdown content to display on the central div area
+}
+
+.navlink .current {
+  //highlighted or darkened background
+}
+
+.content {
+  //content area is where markdown -> HTML output gets injected
+}
+
+.feature {
+  //a div for displaying proposed and approved features and their development progress (color coded, hue-mix div label area; see colors below)
+}
+
+.progress {
+  //green = feature-complete, blue = hotfix/patch since last major release, yellow = in-progress and in-testing features, red = in-design and in-development features
+  }

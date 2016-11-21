@@ -10,9 +10,41 @@
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", function(event) {
+      /*Site navigation controls:
+        Banner contains links to the following sections of the site:
+          - overview.md: Overview (default view)
+          - features.md: Features (basically each subsection should be a dimension of Crawl gameplay -- from combat to character development)
+            - Beyond portal
+              - planar_topology.svg: Planar topology
+              - planes.md#upper: Upper beyond
+                - planes.md:fixed: Fixed planes
+                - Variable planes
+              - planes.md#lower: Lower beyond
+                - dusk.md: Plane #21 - Dusk (changes to Dawn during ascent)
+
+            - enemies.md: New enemies
+              - old_one.md: Old One
+            - New items
+              - weapons.md: New weapons
+                - Knout (2-headed whip)
+                - Cat o' nine tails
+                - Mana rifle
+              - New armor
+                - New dragon scales
+              - New consumables, evocables, etc.
+            - New spells
+            - New god? 7th star...
+          - gallery.md: Screenshots and videos documenting project progress, especially showcasing new ares and explaining new features... Maybe start a youtube channel?
+        Footer contains donation link and donation counter?
+          - Link directs user to donate.md and allows donations in denominations of "Tacos" ($3), "Coffee" ($3), and "Beer" ($3), or any other whole dollar amount they choose
+      */
+
+      if(sessionStorage.getItem("overview")) {
+        throw "error?";
+      }
       $.get("./overview.md", function(data) {
         let content = $("#content");
-        console.log(data);
+        sessionStorage.setItem("overview", data);
         content.html(marked(data));
       });
     });
