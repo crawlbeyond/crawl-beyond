@@ -1,9 +1,15 @@
 <html>
 <head>
+  <link href="index.css" rel="stylesheet">
 </head>
 <body>
-  <div id="content">
+  <div class="banner">
+    <div class="navbar">
+      <div class="navlink overview"></div>
+      <div class="navlink features"></div>
+    </div>
   </div>
+  <div class="content"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js">
@@ -24,13 +30,37 @@
 
             - enemies.md: New enemies
               - old_one.md: Old One
+            - New character options
+              - Weapons may now be equipped in the off-hand. Off-handed weapons attack automatically whatever the player is attacking at [150%?] their attack speed [2 duplicate weapons = 150% the number of attacks... #1 attacks, then both, then just #1, then both, etc.] and with a skill-dependent accuracy penalty...
+                - Shields may not be dual-wielded
+                - Projectile weapons may not be dual-wielded
             - New items
-              - weapons.md: New weapons
-                - Knout (2-headed whip)
-                - Cat o' nine tails
-                - Mana rifle
+              - weapons.md#types: New weapons
+                - Knout? (2-headed whip)
+                - Scourge (holy scourge becomes 3-headed)
+                - Cat o' nine tails (9-headed whip)
+                - Nunchaku (essentially a flail equivalent to the quick blade)
+                - Mana rifle (pay MP to fire elemental energies?)
+                - Lance (base damage scales based on distance travelled during attack?)
+              - weapons.md#implicits: Added implicit weapon mods
+                - Combat staves now implicitly confer the same benefit as a +0 normal shield, except the SH bonus it provides scales off of weapon skill instead of shield skill
+                - Grandstaves (large, 2-handed magical staves that have implicit SH bonus like combat staves, but also deal evocable damage and have evocalbe abilities)
+                - Whips (multiheaded)
+                - Whips/flails/clubs/maces/hammers/etc. (inflict stun effects on hit)
+                - Polearms now perform independent attacks on each tile the weapon intersects...
+                - Polearms are now compatible with Portal Projectile. This means that a polearm user can now attack an adjacent tile while simultaneously attacking any tile following smite targeting rules, with the added accuracy of PP.
+                - Long blades now riposte up to 50% of the time (based on weapon skill)
+                - Off-hand long weapons riposte at half the rate they normally would
+                - Unarmed combat implicitly gains riposte?
+              - weapons.md#brands: New weapon brands
+                - [TBA]
               - New armor
-                - New dragon scales
+                - New dragon scales:
+                  - Iridescent
+                    - A lightweight alternative to crystal plate armor. Like a step up from quicksilver scales, without the magic resistance.
+                  - Clockwork?
+                  - Harlequin?
+                  - [more TBA]
               - New consumables, evocables, etc.
             - New spells
             - New god? 7th star...
@@ -39,14 +69,32 @@
           - Link directs user to donate.md and allows donations in denominations of "Tacos" ($3), "Coffee" ($3), and "Beer" ($3), or any other whole dollar amount they choose
       */
 
-      if(sessionStorage.getItem("overview")) {
-        throw "error?";
+      function setContent(html) {
+        const content = $("#content");
+        content.html(html);
       }
-      $.get("./overview.md", function(data) {
-        let content = $("#content");
-        sessionStorage.setItem("overview", data);
-        content.html(marked(data));
-      });
+
+      let query = null;
+      if((query = sessionStorage.getItem("overview"))) {
+        setContent(marked(query));
+      } else {
+        $.get("./overview.md", function(data) {
+          sessionStorage.setItem("overview", data);
+          setContent(marked(data));
+        });
+      }
+
+      const overview = $("#overview");
+      const features = $("#features");
+      const player_handbook = $("#player_handbook");
+      const dm_guide = $("#dm_guide");
+      const loadouts = $("#loadouts");
+      const weapons = $("#weapons");
+      const armor = $("#armor");
+      const spell_masteries = $("#spell_masteries");
+      const planar_topology = $("#planar_topology");
+      const planes = $("#planes");
+      const planar_anomalies = $("#planar_anomalies");
     });
   </script>
 </body>
