@@ -5,12 +5,12 @@
 <body>
   <div class="banner">
     <div class="navbar">
-      <div class="navlink current overview"><a onclick="site.visitSubsection('overview')">Overview</a></div>
-      <div class="navlink features"><a onclick="site.visitSubsection('features')">Features</a></div>
+      <div class="current overview"><a class="navlink" onclick="site.visitSubsection('overview')">Overview</a></div>
+      <div class="features"><a class"navlink" onclick="site.visitSubsection('features')">Features</a></div>
     </div>
   </div>
   <div class="content"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.js">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js">
   </script>
@@ -26,10 +26,12 @@
       let query = null;
       if((query = sessionStorage.getItem(uri))) {
         site.setContent(marked(query));
+        //TODO: highlight new link
       } else {
         $.get("./" + uri + ".md", function(data) {
           sessionStorage.setItem(uri, data);
           site.setContent(marked(data));
+          //TODO: set current section link
         });
       }
     }
@@ -93,8 +95,8 @@
       const overview = $(".overview");
       const features = $(".features");
       /*TODO
-      const player_handbook = $(".player_handbook");
       const dm_guide = $(".dm_guide");
+      const player_handbook = $(".player_handbook");
       const loadouts = $(".loadouts");
       const weapons = $(".weapons");
       const armor = $(".armor");
