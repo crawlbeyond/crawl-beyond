@@ -8,7 +8,7 @@
 
 .navlink {
   //navlinks are the buttons that trigger a fetch command to acquire markdown content to display on the central div area
-  font: normal normal bold medium arial
+  font: normal normal bold medium Arial, Helvetica, sans-serif;
 }
 
 .navlink .current {
