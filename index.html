@@ -106,8 +106,8 @@
       const planar_anomalies = $(".planar_anomalies");
       */
 
-      overview.on("click", site.visitSubsection("overview"));
-      features.on("click", site.visitSubsection("features"));
+      overview.on("click", function() {site.visitSubsection("overview");});
+      features.on("click", function() {site.visitSubsection("features");});
     });
   </script>
 </body>
