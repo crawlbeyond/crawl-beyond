@@ -1,12 +1,12 @@
 <html>
 <head>
-  <link href="index.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <div class="banner">
     <div class="navbar">
-      <div class="navlink overview"></div>
-      <div class="navlink features"></div>
+      <div class="navlink current overview">Overview</div>
+      <div class="navlink features">Features</div>
     </div>
   </div>
   <div class="content"></div>
@@ -84,17 +84,17 @@
         });
       }
 
-      const overview = $("#overview");
-      const features = $("#features");
-      const player_handbook = $("#player_handbook");
-      const dm_guide = $("#dm_guide");
-      const loadouts = $("#loadouts");
-      const weapons = $("#weapons");
-      const armor = $("#armor");
-      const spell_masteries = $("#spell_masteries");
-      const planar_topology = $("#planar_topology");
-      const planes = $("#planes");
-      const planar_anomalies = $("#planar_anomalies");
+      const overview = $(".overview");
+      const features = $(".features");
+      const player_handbook = $(".player_handbook");
+      const dm_guide = $(".dm_guide");
+      const loadouts = $(".loadouts");
+      const weapons = $(".weapons");
+      const armor = $(".armor");
+      const spell_masteries = $(".spell_masteries");
+      const planar_topology = $(".planar_topology");
+      const planes = $(".planes");
+      const planar_anomalies = $(".planar_anomalies");
     });
   </script>
 </body>

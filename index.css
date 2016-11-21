@@ -1,25 +1,33 @@
 .banner {
+  border: 1px solid black;
 }
 
 .navbar {
+  background-color: rgb(32, 32, 32);
 }
 
 .navlink {
   //navlinks are the buttons that trigger a fetch command to acquire markdown content to display on the central div area
+  font: normal normal bold medium arial
 }
 
 .navlink .current {
   //highlighted or darkened background
+  background-color: rgb(128, 128, 128);
+  text-decoration: underline;
 }
 
 .content {
   //content area is where markdown -> HTML output gets injected
+  border: 1px solid black;
 }
 
 .feature {
   //a div for displaying proposed and approved features and their development progress (color coded, hue-mix div label area; see colors below)
+  background-color: white;
 }
 
 .progress {
   //green = feature-complete, blue = hotfix/patch since last major release, yellow = in-progress and in-testing features, red = in-design and in-development features
-  }
+  background-color: yellow;
+}
