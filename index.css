@@ -10,9 +10,10 @@
 .navlink {
   //navlinks are the buttons that trigger a fetch command to acquire markdown content to display on the central div area
   font: normal normal bold medium Arial, Helvetica, sans-serif;
+  padding: 5px;
 }
 
-.navlink .current {
+.navlink.current {
   //highlighted or darkened background
   background-color: rgb(128, 128, 128);
   text-decoration: underline;

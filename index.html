@@ -5,8 +5,8 @@
 <body>
   <div class="banner">
     <div class="navbar">
-      <div class="current overview"><a class="navlink" onclick="site.visitSubsection('overview')">Overview</a></div>
-      <div class="features"><a class"navlink" onclick="site.visitSubsection('features')">Features</a></div>
+      <div><a class="navlink overview current" onclick="site.visitSubsection('overview')">Overview</a></div>
+      <div><a class="navlink features" onclick="site.visitSubsection('features')">Features</a></div>
     </div>
   </div>
   <div class="content"></div>
@@ -24,14 +24,15 @@
 
     site.visitSubsection = function(uri) {
       let query = null;
+      $(".navlink").removeClass("current");
       if((query = sessionStorage.getItem(uri))) {
         site.setContent(marked(query));
-        //TODO: highlight new link
+        $("." + uri).addClass("current");
       } else {
         $.get("./" + uri + ".md", function(data) {
           sessionStorage.setItem(uri, data);
           site.setContent(marked(data));
-          //TODO: set current section link
+          $("." + uri).addClass("current")
         });
       }
     }
